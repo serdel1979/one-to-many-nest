@@ -23,7 +23,9 @@ export class AppService {
   }
 
   createPhoto(newPhoto: PhotoDto): Promise<Photo> {
-    return this.photoRepository.save(newPhoto);
+    let photo = this.photoRepository.save(newPhoto);
+    console.log(photo);
+    return photo;
   }
 
   async deleteUser(userId: string): Promise<any> {

@@ -1,6 +1,8 @@
 import { Body, Controller, Get , Post } from '@nestjs/common';
 import { AppService } from './app.service';
+import { PhotoDto } from './dto/photo.dto';
 import { UserDto } from './dto/user.dto';
+import { Photo } from './proyecto/entity/photo.entity';
 import { User } from './proyecto/entity/user.entity';
 
 @Controller()
@@ -19,7 +21,10 @@ export class AppController {
   }
 
 
-
+  @Post('/photo')
+  createPhoto(@Body() newPhoto: PhotoDto): Promise<Photo> {
+    return this.appService.createPhoto(newPhoto);
+  }
 
 
 }
