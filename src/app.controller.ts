@@ -14,7 +14,12 @@ export class AppController {
 
 
   @Post()
-  createRealState(@Body() newUser: UserDto): Promise<User> {
+  createUser(@Body() newUser: UserDto): Promise<User> {
     return this.appService.createUser(newUser);
   }
+
+
+
+
+
 }

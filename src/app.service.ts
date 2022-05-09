@@ -3,13 +3,15 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { UserDto } from './dto/user.dto';
 import { User } from './proyecto/entity/user.entity';
+import { PhotoDto } from './dto/photo.dto';
+import { Photo } from './proyecto/entity/photo.entity';
 
 @Injectable()
 export class AppService {
 
   constructor(
     @InjectRepository(User)
-    private userRepository: Repository<User>,
+    private userRepository: Repository<User>, @InjectRepository(Photo) private photoRepository: Repository<Photo>
   ) {}
 
   async findAll(params): Promise<User[]> {
@@ -18,6 +20,10 @@ export class AppService {
 
   createUser(newUser: UserDto): Promise<User> {
     return this.userRepository.save(newUser);
+  }
+
+  createPhoto(newPhoto: PhotoDto): Promise<Photo> {
+    return this.photoRepository.save(newPhoto);
   }
 
   async deleteUser(userId: string): Promise<any> {
