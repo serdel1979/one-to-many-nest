@@ -14,7 +14,7 @@ export class AppService {
     private userRepository: Repository<User>, @InjectRepository(Photo) private photoRepository: Repository<Photo>
   ) {}
 
-  async findAll(params): Promise<User[]> {
+  async findAll(): Promise<User[]> {
     return await this.userRepository.find();
   }
 

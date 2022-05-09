@@ -15,11 +15,19 @@ export class AppController {
   }
 
 
+
   @Post()
   createUser(@Body() newUser: UserDto): Promise<User> {
     return this.appService.createUser(newUser);
   }
 
+
+  
+
+  @Get('/users')
+  getUsers(): Promise<User[]> {
+    return this.appService.findAll();
+  }
 
   @Post('/photo')
   createPhoto(@Body() newPhoto: PhotoDto): Promise<Photo> {
